@@ -92,20 +92,20 @@
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <div class="profile-sidebar">
         <div class="profile-userpic">
-            <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+            <img id="profile_img" src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
         </div>
         <div class="profile-usertitle">
-            <div class="profile-usertitle-name">Username</div>
+            <div id= "profile_username" class="profile-usertitle-name">Username</div>
             <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
         </div>
         <div class="clear"></div>
     </div>
     <div class="divider"></div>
-    <form role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
-    </form>
+    <!--<form role="search">-->
+        <!--<div class="form-group">-->
+            <!--<input type="text" class="form-control" placeholder="Search">-->
+        <!--</div>-->
+    <!--</form>-->
     <ul class="nav menu">
         <li class="active"><a href="index.html"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
         <li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
@@ -531,17 +531,7 @@
 <script src="js/custom.js"></script>
 <script src="js/js_lib/index.js"></script>
 <script>
-    window.onload = function () {
-        var chart1 = document.getElementById("line-chart").getContext("2d");
-        window.myLine = new Chart(chart1).Line(lineChartData, {
-            responsive: true,
-            scaleLineColor: "rgba(0,0,0,.2)",
-            scaleGridLineColor: "rgba(0,0,0,.05)",
-            scaleFontColor: "#c5c7cc"
-        });
 
-        get_user_info({email: "samanf74@gmail.com"})
-    };
 </script>
 
 </body>
