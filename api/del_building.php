@@ -17,9 +17,14 @@ try {
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    $building_id = $_POST['ID'];
     $stmt = $conn->prepare('DELETE FROM building WHERE ID= :id');
 
-    $stmt->execute(array('id' => $_POST['ID']));
+    $stmt->execute(array('id' => $building_id));
+
+    $stmt = $conn->prepare('UPDATE devices SET building_ID = 0 WHERE building_ID= :id');
+
+    $stmt->execute(array('id' => $building_id));
 
 //    $stmt = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

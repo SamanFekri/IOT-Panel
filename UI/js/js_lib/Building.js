@@ -4,6 +4,8 @@
 var buildings;
 function init_buildings(){
   get_buildings();
+  setActive('#menu-build');
+  setView('#building-content');
 }
 function get_buildings() {
   var url = "/Thesis/api/building.php"
