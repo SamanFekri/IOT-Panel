@@ -41,7 +41,8 @@ window.onload = function () {
 
 //        get_user_info({email: "samanf74@gmail.com"})
 
-    load_user({email: "samanf74@gmail.com"}, load_user_data_in_page)
+  console.log(localStorage.getItem('token'));
+  load_user({email: localStorage.getItem('token')}, load_user_data_in_page);
 };
 
 function load_user_data_in_page(userData){
