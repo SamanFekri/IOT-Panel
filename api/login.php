@@ -27,7 +27,13 @@ try {
     if ($number == 1) {
         $result->code = 200;
         $result->status = "ok";
-        $result->token = $token['email'];
+
+
+        $rand = "".date("h:i:sa").mt_rand(1,999999);
+        $stmt = $conn->prepare('UPDATE users SET token =:token WHERE email = :email');
+        $stmt->execute(array('email' => $email, 'token' => $rand));
+
+        $result->token = $rand;
     } else {
         $result->status = "error";
 

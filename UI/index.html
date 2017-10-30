@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lumino - Dashboard</title>
+  <title>IOT panel</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/datepicker3.css" rel="stylesheet">
@@ -109,34 +109,35 @@
   <!--</form>-->
 
   <ul class="nav menu">
-    <li class="active"><a href="index.html"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+    <li id="menu-dash"class="active"> <!-- href="index.html"--><a onclick="init_dashboard()" style="cursor: pointer;"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 
-    <li><a href="charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Monitor</a></li>
+    <li id="menu-moni"><!--<a href="charts.html"--> <a onclick="init_monitor()" style="cursor: pointer;"><em class="fa fa-bar-chart">&nbsp;</em> Monitor</a></li>
 
-    <li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Control</a></li>
+    <li id="menu-cont"><!--<a href="widgets.html"--><a onclick="init_control()" style="cursor: pointer;"><em class="fa fa-gamepad">&nbsp;</em> Control</a></li>
 
-    <li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
+    <li><a href="elements.html" style="cursor: pointer;"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
 
-    <li><a onclick="init_buildings()"><em class="fa fa-clone">&nbsp;</em> Buildings</a></li>
+    <li id="menu-build"><a onclick="init_buildings()" style="cursor: pointer;"><em class="fa fa-building-o">&nbsp;</em> Buildings</a></li>
 
-    <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-      <em class="fa fa-navicon">&nbsp;</em> Multilevel <span data-toggle="collapse" href="#sub-item-1"
-                                                             class="icon pull-right"><em class="fa fa-plus"></em></span>
-    </a>
-      <ul class="children collapse" id="sub-item-1">
-        <li><a class="" href="#">
-          <span class="fa fa-arrow-right">&nbsp;</span> Sub Item 1
-        </a></li>
-        <li><a class="" href="#">
-          <span class="fa fa-arrow-right">&nbsp;</span> Sub Item 2
-        </a></li>
-        <li><a class="" href="#">
-          <span class="fa fa-arrow-right">&nbsp;</span> Sub Item 3
-        </a></li>
-      </ul>
-    </li>
-    <li><a onclick="get_users()"><em class="fa fa-group">&nbsp;</em> Users</a></li>
-    <li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+    <!--<li class="parent "><a data-toggle="collapse" href="#sub-item-1">-->
+      <!--<em class="fa fa-navicon">&nbsp;</em> Multilevel <span data-toggle="collapse" href="#sub-item-1"-->
+                                                             <!--class="icon pull-right"><em class="fa fa-plus"></em></span>-->
+    <!--</a>-->
+      <!--<ul class="children collapse" id="sub-item-1">-->
+        <!--<li><a class="" href="#">-->
+          <!--<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 1-->
+        <!--</a></li>-->
+        <!--<li><a class="" href="#">-->
+          <!--<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 2-->
+        <!--</a></li>-->
+        <!--<li><a class="" href="#">-->
+          <!--<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 3-->
+        <!--</a></li>-->
+      <!--</ul>-->
+    <!--</li>-->
+    <li id="menu-scen"><a onclick="init_scenario()" style="cursor: pointer;"><em class="fa fa-puzzle-piece">&nbsp;</em> Scenario</a></li>
+    <li id="menu-user"><a onclick="init_users()" style="cursor: pointer;"><em class="fa fa-group">&nbsp;</em> Users</a></li>
+    <li><a onclick="logout()" href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
   </ul>
 </div><!--/.sidebar-->
 
@@ -2132,7 +2133,7 @@
 
           <div class="form-group">
             <label>Image url</label>
-            <input id="add-user-image" type="url" class="form-control" placeholder="name">
+            <input id="add-user-image" type="url" class="form-control" placeholder="http://">
           </div>
 
           <div class="form-group">
@@ -2164,8 +2165,14 @@
 <script src="js/bootstrap-datepicker.js"></script>
 <script src="js/custom.js"></script>
 <script src="js/js_lib/index.js"></script>
+
+<script src="js/js_lib/dashboard.js"></script>
 <script src="js/js_lib/building.js"></script>
 <script src="js/js_lib/users.js"></script>
+<script src="js/js_lib/control.js"></script>
+<script src="js/js_lib/monitor.js"></script>
+<script src="js/js_lib/scenario.js"></script>
+
 <script>
 
 </script>

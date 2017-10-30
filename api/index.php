@@ -17,11 +17,11 @@ try {
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $conn->prepare('SELECT * FROM users WHERE email = :email');
+    $stmt = $conn->prepare('SELECT * FROM users WHERE token = :token');
 
-    $email = $_POST['email'];
+    $token = $_POST['token'];
 
-    $stmt->execute(array('email' => $email));
+    $stmt->execute(array('token' => $token));
 
     $stmt = $stmt->fetch(PDO::FETCH_ASSOC);
 

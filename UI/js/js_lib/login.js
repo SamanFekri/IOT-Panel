@@ -9,7 +9,10 @@ function login(userData) {
       }
       if (data.code == 200) {
         localStorage.setItem('token', data['token']);
+        console.log("token: " + localStorage.getItem('token'));
         window.location.replace("/Thesis/UI/index.html")
+
+
       } else if (data.code == 900) { // username not exists
         $("#error_msg").css('color', "#ef4040");
         $("#error_msg").html(data.message);

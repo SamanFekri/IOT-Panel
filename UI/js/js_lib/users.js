@@ -3,6 +3,8 @@
  */
 function init_users(){
   get_users();
+  setActive('#menu-user');
+  setView('#user-content');
 }
 
 function get_users(){
@@ -108,22 +110,3 @@ function add_user(){
     }
   )
 }
-
-//<div class="form-group">
-//  <label>Selects</label>
-//  <select class="form-control">
-//  <option>Option 1</option>
-//<option>Option 2</option>
-//<option>Option 3</option>
-//<option>Option 4</option>
-//</select>
-//</div>
-
-//<div class="col-md-4">
-//  <div class="panel panel-primary">
-//  <div class="panel-heading">Primary Panel</div>
-//<div class="panel-body">
-//  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui pharetra molestie. Fusce et dui urna.</p>
-//</div>
-//</div>
-//</div>
