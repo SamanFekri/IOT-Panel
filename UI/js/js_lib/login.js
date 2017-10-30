@@ -8,6 +8,7 @@ function login(userData) {
                 data = JSON.parse(data)
             }
             if (data.code == 200) {
+                token = data.email;
                 window.location.replace("/Thesis/UI/index.html")
             } else if(data.code == 900){ // username not exists
                 $("#error_msg").css('color',"#ef4040")

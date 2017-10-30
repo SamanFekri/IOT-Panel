@@ -18,13 +18,16 @@ try {
     $stmt->execute(array('email' => $email, 'password' => $password));
 
     $number = 0;
+    $token = null;
     foreach ($stmt as $row) {
         $number++;
+        $token = $row;
     }
 
     if ($number == 1) {
         $result->code = 200;
         $result->status = "ok";
+        $result->token = $token['email'];
     } else {
         $result->status = "error";
 
