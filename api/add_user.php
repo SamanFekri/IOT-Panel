@@ -19,10 +19,16 @@ try {
 
     $stmt = $conn->prepare('INSERT INTO users(email, password, token, info_url, access, name, image) VALUES (:email, :password, NULL, NULL, :access, :mname, :image)');
 
+    // handle image
+    $img = "https://image.flaticon.com/icons/svg/167/167750.svg";
+    if($_POST['Image'] != ""){
+        $img = $_POST['Image'];
+    }
+
     $stmt->execute(array('email' => $_POST['Email'],
                         'access' => $_POST['Access'],
                         'mname' => $_POST['Name'],
-                        'image' => $_POST['Image'],
+                        'image' => $img,
                         'password' => $_POST['Pass']));
 
 //    $stmt = $stmt->fetchAll(PDO::FETCH_ASSOC);
