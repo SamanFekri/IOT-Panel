@@ -37,6 +37,12 @@ function init_monitor() {
             console.log(result);
             values[dev.id].count += 1;
 
+            if(values[dev.id].count > 10){
+              values[dev.id].label.shift();
+              values[dev.id].tdata.shift();
+              values[dev.id].hdata.shift();
+            }
+
             values[dev.id].label.push(values[dev.id].count);
             values[dev.id].tdata.push(result['humidity']);
             values[dev.id].hdata.push(result['temperature']);

@@ -20,11 +20,23 @@ function init_dashboard() {
         function (result) {
           console.log(result);
           temp.count += 1;
+
+          if(temp.count > 10){
+            temp.labels.shift();
+            temp.data.shift();
+          }
+
           temp.labels.push(temp.count);
           temp.data.push(result['humidity']);
           changeTemp(temp.labels,temp.data);
 
           hum.count += 1;
+
+          if(hum.count > 10){
+            hum.labels.shift();
+            hum.data.shift();
+          }
+
           hum.labels.push(hum.count);
           hum.data.push(result['temperature']);
           changeHumidity(hum.labels, hum.data);
