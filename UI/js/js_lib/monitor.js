@@ -17,7 +17,7 @@ function init_monitor() {
         var dev = agent.getThingsByType('multisensor')[j];
 
         var tempDiv = '<div class="row"> <div class="col-md-12"> <div class="panel panel-default"> <div class="panel-heading">';
-        tempDiv += 'Device <select id="sel@sdv" class="dev-sel" onchange="change_dev_room(@sdv)"></select></div> <div class="panel-body">';
+        tempDiv += 'Device ID: @sdv <select id="sel@sdv" class="dev-sel" onchange="change_dev_room(@sdv)"></select></div> <div class="panel-body">';
         tempDiv += '<div class="canvas-wrapper col-md-5" style="margin-right: 20px;"> <canvas class="main-chart" id="tc@sdv" height="200" width="600"></canvas> </div>';
         tempDiv += '<div class="canvas-wrapper col-md-5"> <canvas class="main-chart" id="hc@sdv" height="200" width="600"></canvas> </div>';
         tempDiv += '</div> </div> </div> </div>';
@@ -40,8 +40,8 @@ function init_monitor() {
             values[dev.id].label.push(values[dev.id].count);
             values[dev.id].tdata.push(result['humidity']);
             values[dev.id].hdata.push(result['temperature']);
-            changeTemp(dev.id, values[dev.id].label, values[dev.id].tdata)
-            changeHumidity(dev.id, values[dev.id].label, values[dev.id].hdata)
+            changeTempMonitor(dev.id, values[dev.id].label, values[dev.id].tdata)
+            changeHumidityMonitor(dev.id, values[dev.id].label, values[dev.id].hdata)
           });
 
       }
@@ -64,7 +64,7 @@ function change_dev_room(dev_id) {
   )
 }
 
-function changeTemp(id, label, data) {
+function changeTempMonitor(id, label, data) {
   var struct_temp = {
     labels: label,
     datasets: [
@@ -88,7 +88,7 @@ function changeTemp(id, label, data) {
   });
   window["tc" + id].update();
 }
-function changeHumidity(id, label, data) {
+function changeHumidityMonitor(id, label, data) {
   var struct_hum = {
     labels: label,
     datasets: [
