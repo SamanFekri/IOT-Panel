@@ -5,14 +5,7 @@ function init_monitor() {
   setActive('#menu-moni');
   setView('#monitor-content');
 
-  var values = {}
-
-  //var tempDiv = '<div class="row"> <div class="col-md-12"> <div class="panel panel-default"> <div class="panel-heading">';
-  //tempDiv += 'Device <select id="@s"></select></div> <div class="panel-body">';
-  //tempDiv += '<div class="canvas-wrapper col-md-5"> <canvas class="main-chart" id="@tc" height="200" width="600"></canvas> </div>';
-  //tempDiv += '<div class="canvas-wrapper col-md-5"> <canvas class="main-chart" id="@hc" height="200" width="600"></canvas> </div>';
-  //tempDiv += '</div> </div> </div> </div>';
-
+  var values = {};
 
   var client = new i1820.I1820Client('http://iot.ceit.aut.ac.ir:58902', true);
   client.discovery().then(function (agents) {
@@ -37,6 +30,8 @@ function init_monitor() {
 
         get_buildings_for_monitor();
 
+        set_building(dev.id);
+
         dev.on('log',
           function (result) {
             console.log(result);
@@ -53,7 +48,6 @@ function init_monitor() {
     }
   });
 
-  //$('#d-list').html(tempDiv);
   console.log('hi');
 
 }
@@ -143,38 +137,22 @@ function get_buildings_for_monitor() {
     }
   )
 }
-//<div class="col-lg-12">
-//  <div class="panel panel-default">
-//  <div class="panel-heading">
-//  Line Chart
-//<ul class="pull-right panel-settings panel-button-tab-right">
-//  <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
-//  <em class="fa fa-cogs"></em>
-//  </a>
-//  <ul class="dropdown-menu dropdown-menu-right">
-//  <li>
-//  <ul class="dropdown-settings">
-//  <li><a href="#">
-//  <em class="fa fa-cog"></em> Settings 1
-//</a></li>
-//<li class="divider"></li>
-//  <li><a href="#">
-//  <em class="fa fa-cog"></em> Settings 2
-//</a></li>
-//<li class="divider"></li>
-//  <li><a href="#">
-//  <em class="fa fa-cog"></em> Settings 3
-//</a></li>
-//</ul>
-//</li>
-//</ul>
-//</li>
-//</ul>
-//<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
-//  <div class="panel-body">
-//  <div class="canvas-wrapper">
-//  <canvas class="main-chart" id="line-chart" height="508" width="1526" style="width: 1526px; height: 508px;"></canvas>
-//  </div>
-//  </div>
-//  </div>
-//  </div>
+
+function set_building(dev_id){
+  var params = {ID:dev_id};
+  console.log(params);
+
+  var url = "/Thesis/api/get_device_building.php"
+  $.post(
+    url, params, function (data, status) {
+      console.log(data);
+      console.log(typeof data)
+      if (typeof data == "string") {
+        data = JSON.parse(data)
+      }
+      if(data != '' || data == true) {
+        $('#sel' + dev_id).val(data["building_ID"]);
+      }
+    }
+  )
+}
