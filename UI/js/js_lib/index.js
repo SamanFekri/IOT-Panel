@@ -60,7 +60,7 @@ function logout() {
 }
 
 
-function setActive(id){
+function setActive(id) {
   removeActive()
   $(id).addClass('active');
 }
@@ -73,13 +73,13 @@ function removeActive() {
   $('#menu-user').removeClass();
 }
 
-function setView(id){
-  var contents = ['#dashboard-content', '#monitor-content','#control-content','#building-content','#scenario-content','#user-content']
-  for(var i=0; i<6; i++){
+function setView(id) {
+  var contents = ['#dashboard-content', '#monitor-content', '#control-content', '#building-content', '#scenario-content', '#user-content']
+  for (var i = 0; i < 6; i++) {
     console.log()
-    if(contents[i] == id){
+    if (contents[i] == id) {
       $(id).show();
-    }else{
+    } else {
       $(contents[i]).hide();
     }
   }
